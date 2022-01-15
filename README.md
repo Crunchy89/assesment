@@ -21,3 +21,5 @@
 -   method:post endpoint:api/pegawai untuk menambah data kasbon request: [nama:varchar|required|unique|maks:10.tanggal_masuk:date|required|tidak_lebih_dari_tanggal_sekarang,total_gaji:integer|required|min:4000000|maks:100000000]
 -   method:get endpoint:api/kasbon untuk menampilkan seluruh data karbon request:[bulan:string|required|format:yyyy-mm,belum_disetujui:integer|nullable|jika_1_maka_menampilkan_yang_belum_disetujui,page:integer|nullable]
 -   method:post endpoint:api/kasbon request:[pegawai_id:integer|required|exist:pegawai,id|sudah_bekerja_lebih_dari_1_tahun|maksimal_3_kali_dalam_1_bulan]
+-   method:patch endpoint:api/kasbon/setujui/{id} untuk mengisi field tanggal disetujui berdasarkan id kasbon request:[id:required|exist:kasbon,id|tanggal_disetujui_masih_null]
+    -method:post endpoint:api/kasbon/setujui-masal mengubah status seluruh data kasbon yang belum disetujui menjadi disetujui melalui pengisian tanggal_disetujui.
