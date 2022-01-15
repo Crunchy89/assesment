@@ -18,4 +18,4 @@
 ## enpoint
 
 -   method:get endpoint:api/pegawai untuk melihat semua list pegawai
--   method:post endpoint:api/pegawai inputan: nama:varchar|required|unique|maks:10.tanggal_masuk:date|required|tidak_lebih_dari_tanggal_sekarang,total_gaji:integer|required|min:4000000|maks:100000000
+-   method:post endpoint:api/pegawai inputan: [nama:varchar|required|unique|maks:10.tanggal_masuk:date|required|tidak_lebih_dari_tanggal_sekarang,total_gaji:integer|required|min:4000000|maks:100000000]
