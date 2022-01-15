@@ -17,5 +17,7 @@
 
 ## enpoint
 
--   method:get endpoint:api/pegawai untuk melihat semua list pegawai
--   method:post endpoint:api/pegawai inputan: [nama:varchar|required|unique|maks:10.tanggal_masuk:date|required|tidak_lebih_dari_tanggal_sekarang,total_gaji:integer|required|min:4000000|maks:100000000]
+-   method:get endpoint:api/pegawai untuk melihat semua list pegawai request:[page:integer|nullable]
+-   method:post endpoint:api/pegawai untuk menambah data kasbon request: [nama:varchar|required|unique|maks:10.tanggal_masuk:date|required|tidak_lebih_dari_tanggal_sekarang,total_gaji:integer|required|min:4000000|maks:100000000]
+-   method:get endpoint:api/kasbon untuk menampilkan seluruh data karbon request:[bulan:string|required|format:yyyy-mm,belum_disetujui:integer|nullable|jika_1_maka_menampilkan_yang_belum_disetujui,page:integer|nullable]
+-   method:post endpoint:api/kasbon request:[pegawai_id:integer|required|exist:pegawai,id|sudah_bekerja_lebih_dari_1_tahun|maksimal_3_kali_dalam_1_bulan]

@@ -38,7 +38,11 @@ class AppServiceProvider extends ServiceProvider
             return str_replace(':attribute', $attribute, __('Pegawai belum bekerja lebih dari 1 tahun'));
         });
         Validator::extend('maks_kasbon', function ($attribute, $value, $parameters, $validator) {
-            $data = Kasbon::where('pegawai_id', $value)->get()->count();
+            $data = Kasbon::where('pegawai_id', $value)
+                ->whereMonth('created_at', DB::RAW('MONTH(now())'))
+                ->whereYear('created_at', DB::RAW('YEAR(now())'))
+                ->get()
+                ->count();
             if ($data < 3)
                 return true;
             return false;
@@ -52,6 +56,7 @@ class AppServiceProvider extends ServiceProvider
             if ($total_gaji) {
                 $data = Kasbon::selectRaw('SUM(total_kasbon) as total')
                     ->whereRaw('MONTH(created_at) = MONTH(NOW())')
+                    ->whereRaw('YEAR(created_at) = YEAR(NOW())')
                     ->where('pegawai_id', $id)
                     ->first();
                 if (($data->total + $value) <= ($total_gaji->getRawOriginal('total_gaji') * 0.5))
